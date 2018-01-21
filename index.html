@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html class="pageAnimation">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rancon Website</title>
+    <!--   <link rel="stylesheet" href="css/animate.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    
+        <div class="box"></div>
+        <nav>
+           
+            <div class="brand">
+                <img src="/img/logo.svg" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li>
+                    <a href="#">Residence</a>
+                    <ul>
+                        <li><a href="#">Ongoing</a></li>
+                        <li><a href="#">Upcoming</a></li>
+                        <li><a href="#">Completed</a></li>
+                        <li><a href="#">Available For Sale</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Commercial</a>
+                    <ul>
+                        <li><a href="#">Ongoing</a></li>
+                        <li><a href="#">Upcoming</a></li>
+                        <li><a href="#">Completed</a></li>
+                        <li><a href="#">Available For Sale</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Philosophy</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <button id="menu-toggler">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+        </nav>
+        
+        <div id="divZoom"></div>
+</body>
+
+
+
+
+<script src="js/snap.svg-min.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+    function ZoomNPan(elm) {
+        var that = this;
+        
+        /** minimum zoom allowed (in percent) */
+        this.minScale = 60;
+        /** maximun zoom allowed (in percent) */
+        this.maxScale = 300;
+        this.invertOnMac = false;
+        
+        // if(elm.hasAttribute('data-zoom-and-pan')) return console.error('ZoomNPan This element is already initialized');
+        // elm.setAttribute('data-zoom-and-pan', '');
+        
+        var currentScale = 100;
+        elm.addEventListener('mousemove', pan);
+        
+        function pan(e) {
+            var panX, panY, pad = 20;
+            if (currentScale >= 100) {
+                panX = (e.offsetX - pad) / (e.target.clientWidth - (pad * 2));
+                panY = (e.offsetY - pad) / (e.target.clientHeight - (pad * 2));
+            }
+            else {
+                panX = 0.5;
+                panY = 0.5;
+            }
+            elm.style.backgroundPositionX = (panX * 100) + '%';
+            elm.style.backgroundPositionY = (panY * 100) + '%';
+        }
+    }
+    var p;
+    function enable(){
+        p = new ZoomNPan(divZoom);
+        p.minScale = 75;
+    }
+    enable();
+    
+    /*** Scroll Image Trannsition Code Here ******/
+    
+    var img = document.getElementById("sectionTwoImg1");
+    var img2 = document.getElementById("sectionTwoImg2");
+    
+    window.onscroll = function() {
+        var bodyHeight  = parseInt(getComputedStyle(document.body).height, 10);
+        var scrollLimit = bodyHeight - window.innerHeight;
+        var scrollTop   = document.body.scrollTop;
+        var scrollPCT   = (scrollTop / (scrollLimit/100)) / 100;
+        
+        var scrollPercentage = (window.scrollY - window.innerHeight) / 10;
+        var scrollPercentage2 = (window.scrollY - window.innerHeight) / 10;
+        img.style.backgroundPosition = `${scrollPercentage}% 0%`;
+        img2.style.backgroundPosition = `${-scrollPercentage2}% 0%`;
+    }
+</script>
+</body>
+
+</html>

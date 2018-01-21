@@ -1,0 +1,207 @@
+@font-face {
+	font-family: 'futurapt-light';
+
+	src: url('../fonts/FuturaPT-Light.woff') format('woff'),
+	url('../fonts/FuturaPT-Light.ttf') format('truetype');    
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'futurapt-bold';
+
+	src: url('../fonts/FuturaPT-Bold.woff') format('woff'),
+	url('../fonts/FuturaPT-Bold.ttf') format('truetype');    
+	font-weight: 600;
+	font-style: normal;
+}
+
+
+*{
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body{
+  padding: 10px;
+  margin: 0 auto;
+  font-family: 'futurapt-light';
+}
+img{
+  width: 100%;
+}
+
+/*** Start Header Area Styling ****/
+.box{
+  background: white;
+  width: 16vw;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  min-width: 150px;
+}
+.brand > img {
+  width: 19vmin;
+  position: absolute;
+  top: 5px;
+}
+nav {
+  height: 60px;
+  border-bottom: 1px solid #e7e7e7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  position: absolute;
+  top: 30px;
+  width: 100%;
+}
+
+/* first level */
+nav > ul {
+  visibility: visible;
+  display: flex;
+  list-style: none;
+}
+
+nav > ul > li {
+  height: 100%;
+  margin-right: 7px;
+
+}
+nav > ul > li > a {
+  color:#fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 4px;
+  letter-spacing: 3px;
+}
+
+nav > ul > li > a.active {
+  color: #ffffff;
+}
+
+/* second level */
+nav > ul > li > ul {
+  position: absolute;
+  top: 60px;
+  list-style: none;
+  display: none;
+  visibility: hidden;
+  min-width: 200px;
+  background-color: #2b354b;
+}
+
+nav > ul > li > ul::before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  left: 24px;
+  top: -10px;
+  opacity: 1;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #2b354b;
+}
+
+nav > ul > li > ul > li {
+  display: flex;
+  margin: 0;
+  border-bottom: 2px solid #273044;
+}
+
+nav > ul > li > ul > li > a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 16px;
+  flex: 1;
+  transition: 0.25s all;
+}
+
+nav > ul > li > ul > li > a:hover {
+  color: #00BCD4;
+  transform: translatex(10px);
+}
+
+#menu-toggler {
+  visibility: hidden;
+  display: none;
+}
+
+@media (max-width: 660px) {
+  nav > ul {
+    visibility: hidden;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2b354b;
+  }
+
+  nav > ul > li {
+    margin-right: 0;
+    display: flex;
+    width: 100%;
+  }
+
+  nav > ul > li > a {
+    flex: 1;
+    text-align: center;
+    padding: 16px;
+    color: white;
+  }
+
+  #menu-toggler {
+    display: flex;
+    visibility: visible;
+    padding: 10px 12px;
+    background-color: white;
+    border: 1px solid #efefef;
+  }
+
+  #menu-toggler.active {
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.2);
+    outline: none;
+  }
+}
+
+#divZoom {
+  height: 97vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+
+  -webkit-animation-name: background;
+  -webkit-animation-duration: 10s;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+
+  -moz-animation-name: background;
+  -moz-animation-duration: 10s;
+  -moz-animation-direction: alternate;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+}
+
+
+
+@keyframes background {
+  0% {
+    background-image: url('/img/theedge-day.jpg');
+  }
+/*40% {
+  background-image: url('theedge-dusk.jpg');
+  }*/
+  100% {
+    background-image:url('/img/theedge-night.jpg');
+  }
+}
+
+/*** End Header Area Styling ****/
+
